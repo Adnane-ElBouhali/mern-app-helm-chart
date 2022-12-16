@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend-deployment
+  namespace: helm
+  labels:
+    chart: backend
+spec:
+  selector:
+    matchLabels:
+      app: "backend-selector"
+  template:
+    metadata:
+      labels:
+        app: "backend-selector"
+    spec:
+      containers:
+      - name: backend
+        image: "{{ .Values.backend.image.repository }}:{{ .Values.backend.image.tag }}"
+        ports:
+        - containerPort: {{ .Values.backend.service.servicePort}}

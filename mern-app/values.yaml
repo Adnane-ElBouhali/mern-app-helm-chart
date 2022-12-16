@@ -1,0 +1,22 @@
+# Frontend
+frontend:
+  replicaCount: 1
+  revisionHistoryLimit: 1
+  image:
+    repository: adnaneelbouhali/aseds-exam-part2
+    tag: helm-frontend-image
+  service:
+    type: NodePort
+    servicePort: 80 # the port where nginx serves its traffic
+
+# backend
+backend:
+  replicaCount: 1
+  revisionHistoryLimit: 1
+  image:
+    repository: adnaneelbouhali/aseds-exam-part2
+    tag: helm-backend-image
+  service:
+    type: NodePort
+    servicePort: 8000
+
